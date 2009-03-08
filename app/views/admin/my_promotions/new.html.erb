@@ -6,6 +6,6 @@
 	<%= render :partial => "form", :locals => { :f => f } %>
 	</table>
 	<p>
-	  <%= submit_tag t("create") %>
+	  <%= submit_tag t("create") %> or <%= link_to t("cancel"), collection_url %>
 </p>
 <% end %>

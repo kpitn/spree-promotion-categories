@@ -1,5 +1,6 @@
 class MyPromotion < ActiveRecord::Base
-   #validates_presence_of :name
+  validates_presence_of :name
+  
   has_many :promotion_categories
   has_many :image_pubs, :as => :viewable, :order => :position, :dependent => :destroy
 
