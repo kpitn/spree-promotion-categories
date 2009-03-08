@@ -3,7 +3,6 @@ h1. spree-promotion-categories
 h2. Installation
 
 script/extension install git://github.com/kpitn/spree-promotion-categories.git
-none
 
 h2. Use
 
