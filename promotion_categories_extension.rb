@@ -26,5 +26,12 @@ class PromotionCategoriesExtension < Spree::Extension
       end
     end
 
+        # Add access to reviews/ratings to the product model
+    Taxon.class_eval do
+      has_many :promotion_category
+    end
+
+
+
   end
 end

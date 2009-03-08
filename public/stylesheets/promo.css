@@ -5,3 +5,4 @@ div.scrollable_promo {position:relative;overflow:hidden;width: 780px;height:180p
 #promo_thumbs div.hover { background-color:#444;}
 #promo_thumbs div.active { background-color:#066; cursor:default;}
 ul.promo_tabs li {float:left;width:20px;height:20px;list-style-type: none;background:#CCC;border:1px solid black;text-align:center}
+ul.promo_tabs {margin:0px;padding:0px}
