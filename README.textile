@@ -15,3 +15,10 @@ h2. Use
 <pre>
 <%= render :partial => "/my_promotions/preview", :locals=>{:taxon => @taxon }%>
 </pre>
+
+h2. See extension in action :
+
+h3. Admin
+<a href='http://imagik.fr/view/18925'><img src='http://imagik.fr/thumb/18925.jpeg'></a>
+<a href='http://imagik.fr/view/18931'><img src='http://imagik.fr/thumb/18931.jpeg'></a>
+<a href='http://imagik.fr/view/18934'><img src='http://imagik.fr/thumb/18934.jpeg'></a>
