@@ -10,3 +10,8 @@ h2. Use
 <pre>
 <%= render :partial => "/my_promotions/preview", :locals=>{:taxon => @taxon }%>
 </pre>
+
+*In "/products/index.html"*
+<pre>
+<%= render :partial => "/my_promotions/preview", :locals=>{:taxon => @taxon }%>
+</pre>
