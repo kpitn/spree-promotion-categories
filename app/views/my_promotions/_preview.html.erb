@@ -3,7 +3,7 @@
   <%= render :partial => 'tabs', :locals => {:current => "Preview"} %>
 <% else %>
   <% return if taxon.promotion_category.first.nil? %>
-  <% my_promotion=taxon.promotion_category.first.my_promotion %>
+  <% my_promotion=MyPromotion.find(:first,:joins=>[:promotion_categories],:conditions=>["promotion_categories.taxon_id=? and start_date<=? and end_date>=?",taxon.id,Date.today,Date.today]) %>
   <% return if my_promotion.nil? %>
 <% end %>
 

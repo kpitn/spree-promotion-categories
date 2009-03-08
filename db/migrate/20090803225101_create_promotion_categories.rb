@@ -5,8 +5,8 @@ class CreatePromotionCategories < ActiveRecord::Migration
       t.string :pub_file_name
       t.string :pub_content_type
       t.integer:pub_file_size
-      t.datetime :pub_updated_at
-      t.datetime :start_date
+      t.date :pub_updated_at
+      t.date :start_date
       t.datetime :end_date
 	    t.timestamps
 	  end
