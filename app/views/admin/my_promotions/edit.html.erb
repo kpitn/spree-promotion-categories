@@ -1,0 +1,9 @@
+<h1><%= t("edit_my_promotion") %></h1>
+<%= render :partial => 'tabs', :locals => {:current => "Promotion Details"} %>
+<% form_for(:promotion_category, :url => object_url, :html => { :method => :put, :multipart => true }) do |f| %>
+	<%= render :partial => "form", :locals => { :f => f } %>
+	</table>
+	<p>
+  <%= render :partial => 'shared/edit_resource_links' %>
+</p>
+<% end %>

@@ -1,0 +1,22 @@
+<%= render :partial => '/admin/my_promotions/tabs', :locals => {:current => "Promotion Categories"} %>
+<div id="selected-suggestions">
+  <%= render :partial => "table", :locals => {:promotion_categories => @promotion_categories} %>
+</div>
+<table>
+  <tr>
+    <td><b><%= t('search') %>:</b></td>
+    <td><input id="searchtext" size="25"></td>
+  </tr>
+</table>
+<div id="searching" style="display:none">
+  <%= t('searching') %> &nbsp; <%= image_tag "spinner.gif" %>  
+</div>
+<%= observe_field(:searchtext,
+                  :frequency => 0.75,
+                  :update => :search_hits,
+                  :loading => "Element.show('searching')",
+                  :complete => "Element.hide('searching')",
+                  :url => available_admin_my_promotion_promotion_categories_url(@my_promotion),
+                  :with => "'q=' + value") %>  
+<br/>                 
+<div id="search_hits"></div>

@@ -1,0 +1,34 @@
+<script type="text/javascript">
+  function displayRow(){
+    var row = document.getElementById("captionRow");
+    if (row.style.display == '') row.style.display = 'none';
+    else row.style.display = '';
+  }
+</script>
+<h4><%= t('available_suggestions') %></h4>
+<table class="basic-table">
+	<thead>
+		<tr>
+			<th><%= t("name") %></th>
+			<th><%= t("action") %></th>
+		</tr>
+	</thead>
+	<tbody>
+    <% @available_promotion_categories.each do |promotion_category| %>
+      <tr id="<%= dom_id(promotion_category) %>">
+        <td valign="top"><%= promotion_category.name %></td>
+		    <td valign="top">
+		      <%= link_to_remote t('select'), 
+		                         :url => select_admin_my_promotion_promotion_category_path(@my_promotion, promotion_category),
+		                         :loading => "Element.show(#{dom_id(promotion_category, :spinner)})",
+		                         :update => 'selected-suggestions',
+		                         :complete => "$('#{dom_id(promotion_category)}').remove(); Element.hide(#{dom_id(promotion_category, :spinner)});" %>
+          <%= image_tag "spinner.gif", :style => "display:none", :id => "#{dom_id(promotion_category, :spinner)}" %>
+		    </td>        
+      </tr>
+    <% end %>
+    <% if @available_promotion_categories.empty? %>
+     <tr><td colspan="3"><%= t('no_match_found') %>.</td></tr>
+    <% end %>
+  </tbody>
+</table>

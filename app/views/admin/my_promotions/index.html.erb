@@ -1,0 +1,14 @@
+
+<% if @my_promotions.size>0 %>
+<% @my_promotions.each do |promotion| %>
+  <%=  promotion.name %> 
+  | <%= link_to("edit",edit_admin_my_promotion_url(promotion)) %>
+   | <%=link_to_delete(promotion) %>
+<br/>
+<% end %>
+<% else %>
+  Aucune promotion actuellement
+<% end %>
+
+<br/>
+<%= link_to("Ajouter", new_admin_my_promotion_url) %>

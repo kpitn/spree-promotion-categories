@@ -1,0 +1,11 @@
+
+<%#= render :partial => 'tabs', :locals => {:current => "Promotion Details"} %>
+<h1><%= t("new_my_promotion") %></h1>
+
+<% form_for(:my_promotion, :url => collection_url) do |f| %>
+	<%= render :partial => "form", :locals => { :f => f } %>
+	</table>
+	<p>
+	  <%= submit_tag t("create") %>
+</p>
+<% end %>

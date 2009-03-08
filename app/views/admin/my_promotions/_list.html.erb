@@ -1,0 +1,17 @@
+<table class="admin-report">
+  <tr>
+    <th><%= t("name") %></th>
+    <th><%= t("action") %></th>
+  </tr>
+<% for taxonomy in @taxonomies %>
+  <tr>
+	<td>
+	  <%= taxonomy.name %>
+    </td>
+    <td>
+      <%= link_to_edit taxonomy.id %>
+    </td>
+  </tr>
+<% end %>
+</table>
+

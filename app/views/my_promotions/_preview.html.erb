@@ -1,0 +1,59 @@
+<% content_for :head do %>
+  <%=  stylesheet_link_tag  'promo' %>
+<% end %>
+
+<%= render :partial => 'tabs', :locals => {:current => "Preview"} %>
+<% if @my_promotion.image_pubs.size>0 %>
+  <% if @my_promotion.image_pubs.size>1 %>
+
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery-1.3.2.min' %>
+  <%= javascript_include_tag 'jquery.scrollable' %>
+  <script>
+  jQuery.noConflict();
+  (function($) {
+    $(function() {
+      $("div.scrollable_promo").scrollable({
+          navi:'ul.promo_tabs' ,
+          size: 1,
+          items: '#promo_thumbs',
+          hoverClass: 'hover',
+          interval: 9000,
+          loop: true,
+          speed: 600,
+          onBeforeSeek: function() {
+              this.getItems().fadeTo(300, 0.2);
+          },
+          onSeek: function() {
+              this.getItems().fadeTo(300, 1);
+          }
+      });
+    });
+  })(jQuery);
+
+</script>
+<style TYPE="text/css">
+</style>
+<% end %>
+  <div class="scrollable_promo">
+      <div id="promo_thumbs">
+        <% @my_promotion.image_pubs.each do |image| %>
+              <div><%= image_tag image.attachment.url(:pub) %></div>
+        <% end %>
+      </div>
+  </div>
+  <ul class="promo_tabs">
+        <% @my_promotion.image_pubs.each_with_index do |image,index| %>
+          <%= "<li>#{(index+1)}</li>"  %>
+        <% end %>
+  </ul>
+   <% else %>
+  <div class="scrollable_promo">
+      <div id="promo_thumbs">
+        <% @my_promotion.image_pubs.each do |image| %>
+              <div><%= image_tag image.attachment.url(:pub) %></div>
+        <% end %>
+      </div>
+  </div>
+  <% end %>
+<% end %>

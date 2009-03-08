@@ -1,0 +1,33 @@
+<% content_for :head do %>
+  <%= calendar_date_select_includes %>
+<% end %>
+<table cellspacing="5">
+  <tr>
+    <td><%= t("name")%>: </td>
+    <td>
+      <%=error_message_on :my_promotion, :name %>
+      <%= text_field :my_promotion, :name  %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= t("start")%>: </td>
+    <td>
+      <%= error_message_on :my_promotion, :start_date %>
+      <%= calendar_date_select :my_promotion, :start_date, :style=>"width:150px" %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= t("stop")%>: </td>
+    <td>
+      <%= error_message_on :my_promotion, :end_date %>
+      <%= calendar_date_select :my_promotion, :end_date, :style=>"width:150px" %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div id="image-listing">
+        <%= render :partial => 'images', :locals => {:viewable => @my_promotion, :f => f} -%>
+      </div>
+    </td>
+  </tr>
+ 

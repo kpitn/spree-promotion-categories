@@ -1,0 +1,19 @@
+<div id="tab-container">
+  <ul id="tabnav">
+  	<li>
+  	  <%= link_to t("my_promotion"),
+  	              edit_admin_my_promotion_url(@my_promotion),
+  	              :class => (current == "Promotion Details" ? "active" : "") %>
+  	</li>
+  	<li>
+  	  <%= link_to t("category"),
+  	              selected_admin_my_promotion_promotion_categories_url(@my_promotion),
+  	              :class => (current == "Categories Selection" ? "active" : "") %>
+    </li>
+  	<li>
+  	  <%= link_to t("preview"),
+  	              preview_admin_my_promotion_url(@my_promotion),
+  	              :class => (current == "Preview" ? "active" : "") %>
+    </li>
+  </ul>
+</div>

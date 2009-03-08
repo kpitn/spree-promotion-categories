@@ -1,0 +1,7 @@
+div.scrollable_promo {position:relative;overflow:hidden;width: 780px;height:180px;}
+#promo_thumbs {	position:absolute;	width:20000em;clear:both;border:1px solid #222;}
+#promo_thumbs div {   float:left; width:780px; height:180px; background:#333 url(/img/global/gradient/h150.png) repeat-x 0 146px;
+    color:#fff; border-left:1px solid #333; cursor:pointer;}
+#promo_thumbs div.hover { background-color:#444;}
+#promo_thumbs div.active { background-color:#066; cursor:default;}
+ul.promo_tabs li {float:left;width:20px;height:20px;list-style-type: none;background:#CCC;border:1px solid black;text-align:center}
