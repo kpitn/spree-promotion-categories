@@ -6,4 +6,7 @@ script/extension install git://github.com/kpitn/spree-promotion-categories.git
 
 h2. Use
 
-To do
+*In "/taxons/show.html"*
+<pre>
+<%= render :partial => "/my_promotions/preview", :locals=>{:taxon => @taxon }%>
+</pre>
