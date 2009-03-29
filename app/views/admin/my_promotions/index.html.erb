@@ -1,11 +1,17 @@
-
 <% if @my_promotions.size>0 %>
-<% @my_promotions.each do |promotion| %>
-  <%=  promotion.name %> 
-  | <%= link_to("edit",edit_admin_my_promotion_url(promotion)) %>
-   | <%=link_to_delete(promotion) %>
-<br/>
-<% end %>
+<table class="index">
+ <thead>
+   <th><%= t("name") %></th>
+   <th colspan="2"><%= t("action") %></th>
+ </thead>
+<tbody>
+  <% @my_promotions.each do |promotion| %>
+    <tr><td><%=  promotion.name %> </td><td>
+    <%= link_to_edit promotion %>
+     | <%=link_to_delete(promotion) %></td></tr>
+  <% end %>
+</tbody>
+</table>
 <% else %>
   Aucune promotion actuellement
 <% end %>

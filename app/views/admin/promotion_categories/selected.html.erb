@@ -1,8 +1,9 @@
-<%= render :partial => '/admin/my_promotions/tabs', :locals => {:current => "Promotion Categories"} %>
+<%= render :partial => '/admin/my_promotions/tabs', :locals => {:current => "categories"} %>
+
 <div id="selected-suggestions">
   <%= render :partial => "table", :locals => {:promotion_categories => @promotion_categories} %>
 </div>
-<table>
+<table class="index">
   <tr>
     <td><b><%= t('search') %>:</b></td>
     <td><input id="searchtext" size="25"></td>

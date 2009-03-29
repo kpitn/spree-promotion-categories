@@ -1,19 +1,20 @@
-<div id="tab-container">
-  <ul id="tabnav">
-  	<li>
-  	  <%= link_to t("my_promotion"),
-  	              edit_admin_my_promotion_url(@my_promotion),
-  	              :class => (current == "Promotion Details" ? "active" : "") %>
+<h1><%= t("edit_my_promotion") + " &ldquo;#{@my_promotion.name}&rdquo;" %></h1>
+
+<% content_for :sidebar do %>
+
+  <h3 class="name"><%= @my_promotion.name %></h3>
+  <br clear="clear" />
+  <ul class="sidebar product-menu">
+  	<li <%= ' class="active"' if current == "my_promotion" %>>
+  	  <%= link_to t("my_promotion"), edit_admin_my_promotion_url(@my_promotion) %>
   	</li>
-  	<li>
-  	  <%= link_to t("category"),
-  	              selected_admin_my_promotion_promotion_categories_url(@my_promotion),
-  	              :class => (current == "Categories Selection" ? "active" : "") %>
+  	<li <%= ' class="active"' if current == "categories" %>>
+  	  <%= link_to t("categories"), selected_admin_my_promotion_promotion_categories_url(@my_promotion) %>
     </li>
-  	<li>
-  	  <%= link_to t("preview"),
-  	              preview_admin_my_promotion_url(@my_promotion),
-  	              :class => (current == "Preview" ? "active" : "") %>
+  	<li <%= ' class="active"' if current == "preview" %>>
+  	  <%= link_to t("preview"), preview_admin_my_promotion_url(@my_promotion) %>
     </li>
   </ul>
-</div>
+  <br clear="clear" />
+
+<% end %>
