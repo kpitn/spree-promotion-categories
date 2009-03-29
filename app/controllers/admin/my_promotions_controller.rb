@@ -1,6 +1,6 @@
 class Admin::MyPromotionsController < Admin::BaseController
   resource_controller
-  after_filter :set_image, :only => [:create, :update]
+  after_filter :set_image, :only => [:create, :available, :update]
 
   
   create.wants.html  {redirect_to edit_admin_my_promotion_url(@my_promotion) }
@@ -9,7 +9,7 @@ class Admin::MyPromotionsController < Admin::BaseController
   def preview
     @my_promotion = MyPromotion.find(params[:id])
   end
-
+  
 
   private
   def set_image

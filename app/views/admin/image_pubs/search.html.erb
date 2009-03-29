@@ -1,0 +1,20 @@
+   <table>
+      <tr>
+        <td><b><%= t('search') %>:</b></td>
+        <td><input id="searchtext" size="25"></td>
+      </tr>
+    </table>
+    <div id="searching" style="display:none">
+      <%= t('searching') %> &nbsp; <%= image_tag "spinner.gif" %>
+    </div>
+    <%= observe_field(:searchtext,
+                      :frequency => 0.75,
+                      :update => :search_hits,
+                      :loading => "Element.show('searching')",
+                      :complete => "Element.hide('searching')",
+                      :url => available_product_admin_my_promotion_image_pub_url(@my_promotion,@image_pub.id),
+                      :with => "'q=' + value") %>
+    <br/>
+    <div id="search_hits"></div>
+
+  <a href="#" class="jqmClose">Close</a>

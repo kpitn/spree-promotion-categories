@@ -10,8 +10,8 @@ class PromotionCategoriesExtension < Spree::Extension
   define_routes do |map|
 
     map.namespace :admin do |admin|
-      admin.resources :image_pubs
       admin.resources :my_promotions, :member => {:preview=> :get }  do |promotion|
+       promotion.resources :image_pubs,:member=>{:search=>:get,:select_product=>:post,:available_product=>:post}
        promotion.resources :promotion_categories, :member => {:select => :post, :remove => :post}, :collection => {:available => :post, :selected => :get}
      end
     end

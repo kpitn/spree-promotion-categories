@@ -4,16 +4,20 @@
   <thead>
     <tr>
       <th><%= t('image') %></th>
+      <th><%= t('product') %></th>
       <th><%= t('action') %></th>
     </tr>
   </thead>
   <tbody>
     <% viewable.image_pubs.each do |image| %>
-    <tr>
+    <tr id="<%= dom_id(image) %>">
       <td><%= image_tag image.attachment.url(:mini) %></td>
       <td>
+        <span class="name"><%= image.product.name %></span>
+        <span class="change"><%= link_to("changer","#",:onclick=>"javascript:(function($) {$('#dialog').jqm({ajax:'#{search_admin_my_promotion_image_pub_url(@my_promotion,image)}',modal:true}).jqmShow();})(jQuery)",:class=>"jqmodal") %></span></td>
+      <td>
         <%= link_to_remote t('delete'),
-            :url => admin_image_pub_url(image),
+            :url => admin_my_promotion_image_pub_url(@my_promotion,image),
             :method => 'delete',
             :before => "Element.show('img_busy_indicator')", 
             :complete => "Element.hide('img_busy_indicator')",
@@ -43,3 +47,56 @@
     </tr>
   <% end %>
 </table>
+
+<% content_for :head do %>
+  <%= javascript_include_tag("jqmodal") %>
+<style type="text/css">
+/* jqModal base Styling courtesy of;
+  Brice Burgess <bhb@iceburg.net> */
+
+/* The Window's CSS z-index value is respected (takes priority). If none is supplied,
+  the Window's z-index value will be set to 3000 by default (in jqModal.js). You
+  can change this value by either;
+    a) supplying one via CSS
+    b) passing the "zIndex" parameter. E.g.  (window).jqm({zIndex: 500}); */
+
+.jqmWindow {
+    display: none;
+
+    position: fixed;
+    top: 17%;
+    left: 50%;
+
+    margin-left: -300px;
+    width: 600px;
+
+    background-color: #EEE;
+    color: #333;
+    border: 1px solid black;
+    padding: 12px;
+}
+
+.jqmOverlay { background-color: #000; }
+
+/* Fixed posistioning emulation for IE6
+     Star selector used to hide definition from browsers other than IE6
+     For valid CSS, use a conditional include instead */
+* html .jqmWindow {
+     position: absolute;
+     top: expression((document.documentElement.scrollTop || document.body.scrollTop) + Math.round(17 * (document.documentElement.offsetHeight || document.body.clientHeight) / 100) + 'px');
+}
+</style>
+<% end  %>
+<script>
+(function($) {
+    $(document).ready(function(){
+        //$('#dialog').jqm({trigger: 'a.jqmodal'});
+    });
+})(jQuery)
+</script>
+<div class="jqmWindow" id="dialog">
+ 
+
+</div>
+
+
