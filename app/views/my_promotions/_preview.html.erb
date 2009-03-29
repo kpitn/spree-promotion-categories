@@ -60,7 +60,7 @@
   <div class="scrollable_promo">
       <div id="promo_thumbs">
         <% my_promotion.image_pubs.each do |image| %>
-              <div><%= image_tag image.attachment.url(:pub) %></div>
+              <div><%= link_to(image_tag(image.attachment.url(:pub)),image.product) %></div>
         <% end %>
       </div>
   </div>
