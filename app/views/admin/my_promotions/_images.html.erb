@@ -13,7 +13,7 @@
     <tr id="<%= dom_id(image) %>">
       <td><%= image_tag image.attachment.url(:mini) %></td>
       <td>
-        <span class="name"><%= image.product.name %></span>
+        <span class="name"><%= image.product.name unless image.product.nil? %></span>
         <span class="change"><%= link_to("changer","#",:onclick=>"javascript:(function($) {$('#dialog').jqm({ajax:'#{search_admin_my_promotion_image_pub_url(@my_promotion,image)}',modal:true}).jqmShow();})(jQuery)",:class=>"jqmodal") %></span></td>
       <td>
         <%= link_to_remote t('delete'),
