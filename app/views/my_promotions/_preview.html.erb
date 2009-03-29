@@ -47,7 +47,13 @@
   <div class="scrollable_promo">
       <div id="promo_thumbs">
         <% my_promotion.image_pubs.each do |image| %>
-              <div><%= image_tag image.attachment.url(:pub) %></div>
+              <div>
+               <% if image.product.nil? %>
+                <%= image_tag image.attachment.url(:pub) %>
+              <% else %>
+                 <%= link_to(image_tag(image.attachment.url(:pub)),image.product) %>
+              <% end %>
+            </div>
         <% end %>
       </div>
   </div>
@@ -60,7 +66,13 @@
   <div class="scrollable_promo">
       <div id="promo_thumbs">
         <% my_promotion.image_pubs.each do |image| %>
-              <div><%= link_to(image_tag(image.attachment.url(:pub)),image.product) %></div>
+              <div>
+                <% if image.product.nil? %>
+              <%= image_tag(image.attachment.url(:pub)) %>
+            <% else %>
+              <%= link_to(image_tag(image.attachment.url(:pub)),image.product) %>
+            <% end %>
+        </div>
         <% end %>
       </div>
   </div>
